@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://finvora.in/sitemap.xml

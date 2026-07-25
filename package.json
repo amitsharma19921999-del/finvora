@@ -1,0 +1,13 @@
+{
+  "name": "insightx",
+  "version": "2.1.0",
+  "private": true,
+  "description": "INSIGHT-X trading platform — single-service deploy (the API server also serves the built PWA).",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "npm install --prefix server && npm install --prefix client --include=dev && npm run build --prefix client",
+    "start": "node server/src/index.js"
+  }
+}

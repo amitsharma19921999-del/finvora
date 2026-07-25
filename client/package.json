@@ -1,0 +1,21 @@
+{
+  "name": "insightx-client",
+  "version": "2.1.0",
+  "description": "INSIGHT-X Trading Platform — Investor PWA + Administrator Console",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/gen-icons.mjs && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lightweight-charts": "^4.2.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.8"
+  }
+}

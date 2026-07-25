@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+**/node_modules/
+
+# build output
+client/dist/
+dist/
+
+# runtime data — DB, uploaded documents, auto-generated secrets (NEVER commit)
+server/data/
+**/data/*.db
+**/data/*.db-*
+**/*.secret
+
+# env / secrets
+.env
+.env.*
+!.env.example
+client/.env.local
+
+# logs & os
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# vercel / editors
+.vercel
+.idea/
+.vscode/

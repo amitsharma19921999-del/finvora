@@ -1,0 +1,35 @@
+{
+  "name": "Finvora Trading Platform",
+  "short_name": "Finvora",
+  "description": "Register, complete KYC, deposit funds, trade with live market data, track your portfolio and withdraw — the complete investment lifecycle.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0c0c0e",
+  "theme_color": "#0c0c0e",
+  "categories": [
+    "finance",
+    "business"
+  ],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

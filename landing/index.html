@@ -1,0 +1,941 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Finvora — Trade Stocks, F&O, Commodities & IPOs | Online Trading App</title>
+<meta name="description" content="Finvora is a fast online trading app for stocks, F&O, commodities and IPOs. Pro charts, one-tap orders, live P&L. Open a free account online in minutes.">
+<meta name="keywords" content="Finvora, online trading app, stock trading, F&O, futures and options, commodities, IPO, demat account, NSE, BSE, MCX, NCDEX, intraday, live P&L, trading charts">
+<meta name="author" content="Finvora">
+<meta name="theme-color" content="#0c0c0e">
+<link rel="canonical" href="https://finvora.in/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Finvora — Trade Stocks, F&O, Commodities & IPOs">
+<meta property="og:description" content="A fast online trading app for stocks, F&O, commodities and IPOs. Pro charts, one-tap orders, live P&L. Open a free account online in minutes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://finvora.in/">
+<meta property="og:image" content="/icons/icon-512.png">
+<meta property="og:site_name" content="Finvora">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Finvora — Trade Stocks, F&O, Commodities & IPOs">
+<meta name="twitter:description" content="A fast online trading app for stocks, F&O, commodities and IPOs. Pro charts, one-tap orders, live P&L. Open a free account in minutes.">
+<meta name="twitter:image" content="/icons/icon-512.png">
+
+<!-- Icons / PWA -->
+<link rel="icon" href="/icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<link rel="manifest" href="/manifest.webmanifest">
+
+<!-- JSON-LD structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Finvora",
+      "url": "https://finvora.in/",
+      "logo": "https://finvora.in/icons/icon-512.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "[Phone]",
+        "email": "[support email]",
+        "contactType": "customer support"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "name": "Finvora",
+      "url": "https://finvora.in/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://finvora.in/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Finvora",
+      "operatingSystem": "Android",
+      "applicationCategory": "FinanceApplication",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.6",
+        "ratingCount": "60000"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+:root{
+  --bg:#0c0c0e; --surface:#16171a; --surface2:#1a1b1e; --border:#26272b; --border-soft:#1d1e21;
+  --text:#f4f5f6; --muted:#9ea1a9; --muted2:#797d86; --lime:#c6f628; --lime-ink:#0d160d;
+  --green:#2ac075; --red:#ef5443; --teal:#23c7bc;
+  --r-card:14px; --r-btn:10px;
+  --maxw:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:hidden}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  font-size:16px;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+h1,h2,h3{line-height:1.15;letter-spacing:-0.02em;font-weight:700}
+ul{list-style:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+:focus-visible{outline:2px solid var(--lime);outline-offset:2px;border-radius:6px}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.eyebrow{
+  display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--teal);margin-bottom:14px;
+}
+.h2{font-size:clamp(26px,4.4vw,40px);margin-bottom:14px}
+.sub{color:var(--muted);font-size:clamp(15px,1.8vw,18px);max-width:640px}
+.accent-lime{color:var(--lime)}
+.accent-teal{color:var(--teal)}
+.pos{color:var(--green)}
+.neg{color:var(--red)}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-weight:600;font-size:15px;padding:12px 20px;border-radius:var(--r-btn);
+  border:1px solid transparent;transition:transform .15s ease,background .15s ease,border-color .15s ease;
+  white-space:nowrap;min-height:44px;
+}
+.btn:active{transform:translateY(1px)}
+.btn-lime{background:var(--lime);color:var(--lime-ink)}
+.btn-lime:hover{background:#d3fb43}
+.btn-outline{border-color:var(--border);color:var(--text);background:var(--surface)}
+.btn-outline:hover{border-color:#3a3b40;background:var(--surface2)}
+.btn-ghost{color:var(--text);background:transparent;border-color:transparent}
+.btn-ghost:hover{background:var(--surface)}
+.btn-sm{padding:9px 14px;font-size:14px;min-height:40px}
+
+/* ---------- Header ---------- */
+header.site{
+  position:sticky;top:0;z-index:60;background:rgba(12,12,14,.82);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border-soft);
+}
+.nav{display:flex;align-items:center;gap:20px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;flex-shrink:0}
+.tile{
+  width:32px;height:32px;border-radius:9px;background:var(--lime);color:var(--lime-ink);
+  display:grid;place-items:center;font-weight:800;font-size:13px;letter-spacing:-.02em;flex-shrink:0;
+}
+.nav-links{display:flex;gap:6px;margin-left:14px}
+.nav-links a{color:var(--muted);font-size:14.5px;font-weight:500;padding:8px 12px;border-radius:8px;transition:color .15s,background .15s}
+.nav-links a:hover{color:var(--text);background:var(--surface)}
+.nav-actions{display:flex;gap:10px;align-items:center;margin-left:auto}
+.hamburger{display:none;margin-left:auto;width:44px;height:44px;border-radius:10px;background:var(--surface);border:1px solid var(--border);align-items:center;justify-content:center}
+.hamburger span{display:block;width:18px;height:2px;background:var(--text);position:relative}
+.hamburger span::before,.hamburger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--text)}
+.hamburger span::before{top:-6px}.hamburger span::after{top:6px}
+
+/* mobile drawer */
+.drawer{
+  display:none;position:fixed;inset:64px 0 0 0;z-index:55;background:rgba(12,12,14,.98);
+  padding:20px;flex-direction:column;gap:6px;
+}
+.drawer.open{display:flex}
+.drawer a{padding:14px 12px;border-radius:10px;font-size:16px;font-weight:500;color:var(--text);border-bottom:1px solid var(--border-soft)}
+.drawer a:hover{background:var(--surface)}
+.drawer .drawer-cta{display:flex;flex-direction:column;gap:10px;margin-top:14px;border:none}
+.drawer .drawer-cta .btn{width:100%}
+
+/* ---------- Hero ---------- */
+.hero{padding-top:56px;padding-bottom:40px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.05em;
+  color:var(--muted);background:var(--surface);border:1px solid var(--border);
+  padding:7px 13px;border-radius:999px;margin-bottom:22px;
+}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 3px rgba(198,246,40,.15)}
+.hero h1{font-size:clamp(34px,6.2vw,60px);letter-spacing:-.03em;margin-bottom:18px}
+.hero p.lead{color:var(--muted);font-size:clamp(15px,2vw,19px);max-width:520px;margin-bottom:26px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.fineprint{font-size:13px;color:var(--muted2);margin-bottom:22px}
+.rating-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.stars{color:var(--lime);letter-spacing:2px;font-size:15px}
+.rating-row .txt{font-size:14px;color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{
+  font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--muted);
+  background:var(--surface);border:1px solid var(--border);padding:6px 12px;border-radius:999px;
+}
+
+/* ---------- Phone mockup ---------- */
+.phone-wrap{display:flex;justify-content:center;perspective:1200px}
+.phone{
+  width:300px;max-width:100%;background:#0a0a0c;border:1px solid #2a2b30;border-radius:34px;
+  padding:12px;position:relative;box-shadow:0 0 0 1px rgba(255,255,255,.02);
+}
+.phone::before{content:"";position:absolute;top:16px;left:50%;transform:translateX(-50%);width:96px;height:20px;background:#0a0a0c;border-radius:0 0 14px 14px;z-index:3;border:1px solid #26272b;border-top:none}
+.screen{background:var(--bg);border-radius:24px;padding:16px 14px 18px;position:relative;overflow:hidden}
+.toast{
+  display:flex;align-items:center;gap:9px;background:rgba(42,192,117,.12);border:1px solid rgba(42,192,117,.4);
+  color:var(--green);border-radius:11px;padding:9px 11px;font-size:12.5px;font-weight:600;margin-bottom:14px;
+}
+.toast .tick{width:18px;height:18px;border-radius:50%;background:var(--green);color:#06210f;display:grid;place-items:center;font-size:11px;flex-shrink:0}
+.pnl-badge{font-size:11px;font-weight:700;letter-spacing:.05em;color:var(--muted2);margin-left:auto}
+.pnl-badge b{color:var(--green)}
+.scr-head{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.avatar{width:34px;height:34px;border-radius:50%;background:var(--lime);color:var(--lime-ink);display:grid;place-items:center;font-weight:800;font-size:15px}
+.scr-head .who{font-size:11px;color:var(--muted2)}
+.scr-head .who b{display:block;color:var(--text);font-size:14px;font-weight:600}
+.pv-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:12px}
+.pv-card .lbl{font-size:10.5px;letter-spacing:.1em;color:var(--muted2);font-weight:700}
+.pv-card .val{font-size:24px;font-weight:700;letter-spacing:-.02em;margin:4px 0 3px}
+.pv-card .delta{font-size:12.5px;font-weight:600}
+.stk-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 14px;margin-bottom:12px}
+.stk-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.stk-top .nm{font-size:14px;font-weight:700}
+.stk-top .ex{font-size:10px;color:var(--muted2);letter-spacing:.04em}
+.stk-top .pr{font-size:15px;font-weight:700;text-align:right}
+.stk-top .pc{font-size:11.5px;font-weight:600;text-align:right}
+.spark{width:100%;height:44px;display:block;margin:2px 0 10px}
+.tf-chips{display:flex;gap:6px}
+.tf-chips span{font-size:11px;font-weight:600;color:var(--muted2);padding:4px 9px;border-radius:7px;background:var(--surface2);border:1px solid var(--border-soft)}
+.tf-chips span.on{background:rgba(198,246,40,.14);color:var(--lime);border-color:rgba(198,246,40,.3)}
+.wl-title{font-size:10.5px;letter-spacing:.1em;color:var(--muted2);font-weight:700;margin:2px 0 8px}
+.wl-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:1px solid var(--border-soft);font-size:13px}
+.wl-row .sym{font-weight:600}
+.wl-row .rp{text-align:right}
+.wl-row .rp .p{font-weight:600}
+.wl-row .rp .c{font-size:11px;font-weight:600}
+
+/* ---------- Ticker ---------- */
+.ticker-band{border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);background:var(--surface);overflow:hidden}
+.ticker-note{max-width:var(--maxw);margin:0 auto;padding:6px 20px 0;font-size:11px;color:var(--muted2)}
+.ticker-mask{overflow:hidden;padding:12px 0;position:relative;white-space:nowrap}
+.ticker-track{display:inline-flex;gap:0;animation:ticker 60s linear infinite;will-change:transform}
+.ticker-mask:hover .ticker-track{animation-play-state:paused}
+.tk{display:inline-flex;align-items:baseline;gap:7px;padding:0 22px;font-size:13.5px;border-right:1px solid var(--border-soft)}
+.tk .tk-sym{font-weight:700;color:var(--text)}
+.tk .tk-px{color:var(--muted);font-weight:500}
+.tk .tk-ch{font-weight:600;font-size:12.5px}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- Stats band ---------- */
+.stats{background:var(--surface2);border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat{text-align:center}
+.stat .num{font-size:clamp(24px,3.4vw,34px);font-weight:800;letter-spacing:-.02em}
+.stat .num .u{color:var(--lime)}
+.stat .cap{font-size:13.5px;color:var(--muted);margin-top:4px}
+
+/* ---------- Feature cards ---------- */
+.sec-head{max-width:660px;margin-bottom:40px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--r-card);padding:24px;
+  transition:border-color .18s ease,transform .18s ease,background .18s ease;
+}
+.card:hover{border-color:#34353b;background:var(--surface2)}
+.ico{
+  width:44px;height:44px;border-radius:11px;background:rgba(198,246,40,.1);border:1px solid rgba(198,246,40,.22);
+  display:grid;place-items:center;margin-bottom:16px;color:var(--lime);
+}
+.ico svg{width:22px;height:22px;stroke:var(--lime);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:17px;margin-bottom:8px}
+.card p{font-size:14px;color:var(--muted);line-height:1.6}
+.card .explore{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13.5px;font-weight:600;color:var(--teal)}
+.card .explore:hover{color:#43ded3}
+
+/* ---------- Trade / grid-5 ---------- */
+.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+
+/* ---------- Get started / download ---------- */
+.start-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.steps{display:flex;flex-direction:column;gap:18px;margin-top:10px}
+.step{display:flex;gap:16px;align-items:flex-start}
+.step .n{width:34px;height:34px;border-radius:10px;background:var(--lime);color:var(--lime-ink);font-weight:800;display:grid;place-items:center;flex-shrink:0}
+.step .st{font-size:15.5px;font-weight:600;padding-top:5px}
+.dl-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-card);padding:26px}
+.dl-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.dl-btns .btn{flex:1;min-width:150px}
+.dl-cap{font-size:13px;color:var(--muted2);margin-bottom:20px}
+.qr-box{display:flex;gap:16px;align-items:center;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:16px}
+.qr{width:92px;height:92px;flex-shrink:0;border-radius:8px;background:#fff;padding:8px}
+.qr svg{width:100%;height:100%;display:block}
+.qr-box .qr-txt{font-size:13px;color:var(--muted)}
+.qr-box .qr-txt b{display:block;color:var(--text);font-size:14px;margin-bottom:3px;font-weight:600}
+.ios-link{display:inline-flex;align-items:center;gap:7px;margin-top:18px;font-size:14px;font-weight:600;color:var(--teal)}
+.ios-link:hover{color:#43ded3}
+details.help{margin-top:18px;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:0 16px}
+details.help summary{cursor:pointer;padding:14px 0;font-size:14px;font-weight:600;list-style:none;display:flex;align-items:center;justify-content:space-between}
+details.help summary::-webkit-details-marker{display:none}
+details.help summary::after{content:"+";font-size:20px;color:var(--muted);font-weight:400}
+details.help[open] summary::after{content:"–"}
+details.help .help-body{padding:2px 0 16px;font-size:13.5px;color:var(--muted);line-height:1.65}
+details.help .help-body p{margin-bottom:8px}
+details.help .help-body b{color:var(--text)}
+
+/* ---------- Final CTA ---------- */
+.finalcta{
+  background:linear-gradient(180deg,var(--surface2),var(--surface));
+  border:1px solid var(--border);border-radius:20px;padding:52px 32px;text-align:center;
+}
+.finalcta h2{font-size:clamp(26px,4.4vw,40px);margin-bottom:22px}
+.finalcta .fc-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* ---------- Footer ---------- */
+footer.site{border-top:1px solid var(--border-soft);background:var(--surface);padding:56px 0 28px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:36px;margin-bottom:40px}
+.foot-about p{font-size:14px;color:var(--muted);max-width:340px;margin:14px 0 16px;line-height:1.65}
+.foot-about .foot-links{display:flex;gap:16px;flex-wrap:wrap}
+.foot-about .foot-links a{font-size:13.5px;font-weight:600;color:var(--teal)}
+.foot-col h4{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:14px;font-weight:700}
+.foot-col ul li{margin-bottom:10px}
+.foot-col ul li a{font-size:14px;color:var(--muted)}
+.foot-col ul li a:hover{color:var(--text)}
+.legal-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;border-top:1px solid var(--border-soft);padding-top:28px;margin-bottom:24px}
+.legal-block h4{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted2);margin-bottom:10px;font-weight:700}
+.legal-block p{font-size:13px;color:var(--muted);line-height:1.7}
+.foot-bottom{border-top:1px solid var(--border-soft);padding-top:22px}
+.foot-bottom .copy{font-size:13px;color:var(--muted2);margin-bottom:8px}
+.foot-bottom .disc{font-size:12.5px;color:var(--muted2);line-height:1.6;max-width:900px}
+
+/* ---------- iOS modal ---------- */
+.overlay{
+  display:none;position:fixed;inset:0;z-index:100;background:rgba(6,6,8,.72);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  padding:20px;align-items:center;justify-content:center;
+}
+.overlay.open{display:flex}
+.modal{
+  background:var(--surface);border:1px solid var(--border);border-radius:18px;
+  max-width:440px;width:100%;padding:26px;position:relative;max-height:90vh;overflow-y:auto;
+}
+.modal h3{font-size:20px;margin-bottom:6px;padding-right:30px}
+.modal .m-sub{font-size:13.5px;color:var(--muted);margin-bottom:20px}
+.modal ol{list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:14px;margin-bottom:20px}
+.modal ol li{counter-increment:s;display:flex;gap:13px;font-size:14px;color:var(--text);line-height:1.5}
+.modal ol li::before{content:counter(s);flex-shrink:0;width:26px;height:26px;border-radius:8px;background:var(--lime);color:var(--lime-ink);font-weight:800;font-size:13px;display:grid;place-items:center}
+.modal .note{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:13px;font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:12px}
+.modal .trouble{font-size:12.5px;color:var(--muted2);line-height:1.6}
+.modal-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:9px;background:var(--surface2);border:1px solid var(--border);display:grid;place-items:center;font-size:20px;color:var(--muted);line-height:1}
+.modal-close:hover{color:var(--text);background:var(--border)}
+
+/* ---------- Responsive ---------- */
+@media(max-width:1000px){
+  .grid-5{grid-template-columns:repeat(3,1fr)}
+  .grid-5 .card:nth-child(4),.grid-5 .card:nth-child(5){grid-column:span 1}
+}
+@media(max-width:900px){
+  .nav-links{display:none}
+  .nav-actions{display:none}
+  .hamburger{display:flex}
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .phone-wrap{order:2}
+  .start-grid{grid-template-columns:1fr;gap:32px}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:28px}
+  .foot-about{grid-column:1 / -1}
+}
+@media(max-width:760px){
+  section{padding:56px 0}
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+  .grid-5{grid-template-columns:repeat(2,1fr)}
+  .stats-grid{grid-template-columns:repeat(2,1fr);gap:28px 16px}
+  .legal-grid{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .wrap{padding:0 16px}
+  .grid-3{grid-template-columns:1fr}
+  .grid-5{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .hero-cta .btn{flex:1;min-width:0}
+  .finalcta{padding:40px 20px}
+}
+@media(max-width:340px){
+  .phone{width:100%}
+  .dl-btns .btn{min-width:0}
+  .qr-box{flex-direction:column;text-align:center}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .ticker-track{animation:none}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site">
+  <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#top" aria-label="Finvora home">
+        <span class="tile" aria-hidden="true">FV</span>
+        <span>Finvora</span>
+      </a>
+      <div class="nav-links">
+        <a href="#products">Products</a>
+        <a href="#features">Features</a>
+        <a href="#app">The app</a>
+        <a href="#security">Security</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <a class="btn btn-ghost btn-sm js-app" href="/app">Log in</a>
+        <a class="btn btn-lime btn-sm js-app" href="/app">Open account</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+        <span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- mobile drawer -->
+<div class="drawer" id="drawer">
+  <a href="#products">Products</a>
+  <a href="#features">Features</a>
+  <a href="#app">The app</a>
+  <a href="#security">Security</a>
+  <a href="#contact">Contact</a>
+  <div class="drawer-cta">
+    <a class="btn btn-outline js-app" href="/app">Log in</a>
+    <a class="btn btn-lime js-app" href="/app">Open account</a>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero" aria-label="Introduction">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="pill"><span class="dot" aria-hidden="true"></span>SEBI-REGISTERED · NSE · BSE · MCX · NCDEX</span>
+        <h1>Trade bold.<br><span class="accent-lime">Invest smarter.</span></h1>
+        <p class="lead">Stocks, F&amp;O, commodities and IPOs — pro charts, lightning-fast orders and live P&amp;L in one powerful app. Open your account in minutes, fully online.</p>
+        <div class="hero-cta">
+          <a class="btn btn-lime js-app" href="/app">Open free account</a>
+          <a class="btn btn-outline" href="#download">Download the app</a>
+        </div>
+        <p class="fineprint">Android APK &amp; installable web app (PWA). No hidden charges.</p>
+        <div class="rating-row">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span class="txt"><b style="color:var(--text)">4.6</b> · 60k+ ratings</span>
+        </div>
+        <div class="chips" aria-label="Supported exchanges">
+          <span class="chip">NSE</span><span class="chip">BSE</span><span class="chip">MCX</span><span class="chip">NCDEX</span>
+        </div>
+      </div>
+
+      <!-- Phone mockup -->
+      <div class="phone-wrap" aria-hidden="true">
+        <div class="phone">
+          <div class="screen">
+            <div class="toast">
+              <span class="tick">✓</span> Order filled · BUY 50 INFY
+              <span class="pnl-badge">TODAY'S P&amp;L <b>+₹12,480</b></span>
+            </div>
+            <div class="scr-head">
+              <span class="avatar">A</span>
+              <span class="who">Welcome back,<b>Aarav S.</b></span>
+            </div>
+            <div class="pv-card">
+              <div class="lbl">PORTFOLIO VALUE</div>
+              <div class="val">₹4,82,340.75</div>
+              <div class="delta pos">▲ +₹12,480 (2.65%) today</div>
+            </div>
+            <div class="stk-card">
+              <div class="stk-top">
+                <div>
+                  <div class="nm">RELIANCE</div>
+                  <div class="ex">NSE · Equity</div>
+                </div>
+                <div>
+                  <div class="pr">2,945.60</div>
+                  <div class="pc pos">▲ 1.24%</div>
+                </div>
+              </div>
+              <svg class="spark" viewBox="0 0 260 44" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#2ac075" stop-opacity=".35"/>
+                    <stop offset="1" stop-color="#2ac075" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0,32 L20,30 L40,33 L60,26 L80,28 L100,20 L120,24 L140,16 L160,19 L180,12 L200,15 L220,8 L240,11 L260,5 L260,44 L0,44 Z" fill="url(#sg)"/>
+                <path d="M0,32 L20,30 L40,33 L60,26 L80,28 L100,20 L120,24 L140,16 L160,19 L180,12 L200,15 L220,8 L240,11 L260,5" fill="none" stroke="#2ac075" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+              </svg>
+              <div class="tf-chips">
+                <span class="on">1D</span><span>1W</span><span>1M</span><span>1Y</span>
+              </div>
+            </div>
+            <div class="wl-title">WATCHLIST</div>
+            <div class="wl-row"><span class="sym">TCS</span><span class="rp"><span class="p">3,890.10</span> <span class="c neg">-0.42%</span></span></div>
+            <div class="wl-row"><span class="sym">HDFCBANK</span><span class="rp"><span class="p">1,678.25</span> <span class="c pos">+0.81%</span></span></div>
+            <div class="wl-row"><span class="sym">INFY</span><span class="rp"><span class="p">1,512.00</span> <span class="c pos">+2.10%</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TICKER ================= -->
+<div class="ticker-band" aria-label="Live market prices (indicative)">
+  <div class="ticker-note">Indicative prices</div>
+  <div class="ticker-mask">
+    <div class="ticker-track" id="tickerTrack" aria-hidden="true"></div>
+  </div>
+</div>
+
+<!-- ================= STATS BAND ================= -->
+<section class="stats" aria-label="Key statistics" style="padding:40px 0">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><div class="num">12L<span class="u">+</span></div><div class="cap">Active traders</div></div>
+      <div class="stat"><div class="num"><span class="u">₹0</span></div><div class="cap">Brokerage on delivery</div></div>
+      <div class="stat"><div class="num"><span class="u">₹20</span></div><div class="cap">Flat per intraday order</div></div>
+      <div class="stat"><div class="num">4.6<span class="u">★</span></div><div class="cap">Average app rating</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE APP ================= -->
+<section id="app" aria-label="The app and its features">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The app</span>
+      <h2 class="h2">Built for fast, confident trading.</h2>
+      <p class="sub">Everything a serious trader needs and nothing they don't — engineered for speed, clarity and control.</p>
+    </div>
+    <div class="grid-3" id="features">
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l3-4 3 2 4-6"/></svg></div>
+        <h3>Advanced charts &amp; indicators</h3>
+        <p>100+ indicators, multi-timeframe views and drawing tools that load instantly.</p>
+      </div>
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
+        <h3>Lightning order execution</h3>
+        <p>One-tap buy and sell with sub-second placement, so you never miss the move.</p>
+      </div>
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h10"/><path d="M4 18h13"/><circle cx="19" cy="12" r="1.6"/></svg></div>
+        <h3>Live watchlists</h3>
+        <p>Unlimited watchlists with real-time LTP, market depth and quick-order buttons.</p>
+      </div>
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M12 12l5-3"/><path d="M12 3v4"/></svg></div>
+        <h3>Portfolio &amp; P&amp;L tracking</h3>
+        <p>See holdings, positions and realised/unrealised P&amp;L update live as markets move.</p>
+      </div>
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/><rect x="3" y="3" width="18" height="18" rx="4"/></svg></div>
+        <h3>Instant KYC &amp; account opening</h3>
+        <p>Fully digital onboarding — open your Demat &amp; trading account in minutes.</p>
+      </div>
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M10.5 21a2 2 0 0 0 3 0"/></svg></div>
+        <h3>Smart price alerts</h3>
+        <p>Set alerts on price, % change and indicators. Get pinged the instant they trigger.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHAT YOU CAN TRADE ================= -->
+<section id="products" aria-label="What you can trade" style="background:var(--surface2);border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What you can trade</span>
+      <h2 class="h2">One account. Every market.</h2>
+      <p class="sub">From blue-chip equities to commodity futures and fresh IPOs — access it all from a single Finvora account.</p>
+    </div>
+    <div class="grid-5">
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18l5-6 4 3 7-9"/><path d="M4 21h16"/></svg></div>
+        <h3>Stocks &amp; ETFs</h3>
+        <p>5000+ listed stocks and ETFs on NSE &amp; BSE, at flat pricing.</p>
+        <a class="explore js-app" href="/app">Explore →</a>
+      </div>
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+        <h3>Futures &amp; Options</h3>
+        <p>Trade index &amp; stock F&amp;O with a fast options chain and strategy builder.</p>
+        <a class="explore js-app" href="/app">Explore →</a>
+      </div>
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M9.5 10h5M9.5 14h5"/></svg></div>
+        <h3>Commodities</h3>
+        <p>Gold, silver, crude and agri contracts on MCX &amp; NCDEX.</p>
+        <a class="explore js-app" href="/app">Explore →</a>
+      </div>
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M8 7l4-4 4 4"/><rect x="4" y="15" width="16" height="6" rx="2"/></svg></div>
+        <h3>IPOs</h3>
+        <p>Apply to the latest mainboard &amp; SME IPOs in a few taps via UPI.</p>
+        <a class="explore js-app" href="/app">Explore →</a>
+      </div>
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <h3>Research &amp; advisory</h3>
+        <p>SEBI-registered research, ideas and curated baskets to guide your trades.</p>
+        <a class="explore js-app" href="/app">Explore →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GET STARTED / DOWNLOAD ================= -->
+<section id="download" aria-label="Get started and download">
+  <div class="wrap">
+    <div class="start-grid">
+      <div>
+        <span class="eyebrow">Get started</span>
+        <h2 class="h2">Start trading in minutes.</h2>
+        <div class="steps">
+          <div class="step"><span class="n">1</span><span class="st">Open a free account online — no paperwork</span></div>
+          <div class="step"><span class="n">2</span><span class="st">Complete instant KYC with Aadhaar &amp; PAN</span></div>
+          <div class="step"><span class="n">3</span><span class="st">Add funds and place your first trade</span></div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-btns">
+          <a class="btn btn-lime" id="apkBtn" href="/downloads/finvora.apk" download>Download APK</a>
+          <button class="btn btn-outline" id="installPwaBtn" type="button">Install web app</button>
+        </div>
+        <p class="dl-cap">APK · 26 MB · Android 8.0+&nbsp;&nbsp;|&nbsp;&nbsp;PWA works on any modern browser</p>
+
+        <div class="qr-box">
+          <div class="qr" aria-hidden="true">
+            <svg viewBox="0 0 100 100" role="img" aria-label="QR code placeholder">
+              <rect width="100" height="100" fill="#fff"/>
+              <g fill="#0c0c0e">
+                <!-- finder squares -->
+                <path d="M8 8h22v22H8z M13 13h12v12H13z" fill-rule="evenodd"/>
+                <path d="M70 8h22v22H70z M75 13h12v12H75z" fill-rule="evenodd"/>
+                <path d="M8 70h22v22H8z M13 75h12v12H13z" fill-rule="evenodd"/>
+                <!-- pseudo-random modules -->
+                <rect x="38" y="8" width="6" height="6"/><rect x="50" y="8" width="6" height="6"/><rect x="56" y="14" width="6" height="6"/>
+                <rect x="44" y="20" width="6" height="6"/><rect x="38" y="26" width="6" height="6"/><rect x="56" y="26" width="6" height="6"/>
+                <rect x="8" y="38" width="6" height="6"/><rect x="20" y="38" width="6" height="6"/><rect x="32" y="38" width="6" height="6"/>
+                <rect x="44" y="38" width="6" height="6"/><rect x="56" y="38" width="6" height="6"/><rect x="68" y="38" width="6" height="6"/>
+                <rect x="80" y="38" width="6" height="6"/><rect x="14" y="44" width="6" height="6"/><rect x="38" y="44" width="6" height="6"/>
+                <rect x="50" y="44" width="6" height="6"/><rect x="74" y="44" width="6" height="6"/><rect x="86" y="44" width="6" height="6"/>
+                <rect x="8" y="50" width="6" height="6"/><rect x="26" y="50" width="6" height="6"/><rect x="44" y="50" width="6" height="6"/>
+                <rect x="62" y="50" width="6" height="6"/><rect x="80" y="50" width="6" height="6"/><rect x="20" y="56" width="6" height="6"/>
+                <rect x="32" y="56" width="6" height="6"/><rect x="50" y="56" width="6" height="6"/><rect x="68" y="56" width="6" height="6"/>
+                <rect x="86" y="56" width="6" height="6"/><rect x="38" y="62" width="6" height="6"/><rect x="56" y="62" width="6" height="6"/>
+                <rect x="74" y="62" width="6" height="6"/><rect x="38" y="70" width="6" height="6"/><rect x="50" y="70" width="6" height="6"/>
+                <rect x="62" y="70" width="6" height="6"/><rect x="80" y="70" width="6" height="6"/><rect x="44" y="76" width="6" height="6"/>
+                <rect x="56" y="76" width="6" height="6"/><rect x="74" y="76" width="6" height="6"/><rect x="86" y="80" width="6" height="6"/>
+                <rect x="38" y="82" width="6" height="6"/><rect x="50" y="86" width="6" height="6"/><rect x="62" y="82" width="6" height="6"/>
+                <rect x="68" y="88" width="6" height="6"/>
+              </g>
+            </svg>
+          </div>
+          <div class="qr-txt">
+            <b>Scan to install</b>
+            Point your phone camera to get the app
+          </div>
+        </div>
+
+        <a class="ios-link" id="iosGuideLink" href="#" role="button">iPhone/iPad user? See install guide →</a>
+
+        <details class="help">
+          <summary>Having trouble installing?</summary>
+          <div class="help-body">
+            <p><b>Android:</b> if the APK download is blocked, tap the file in Downloads and allow "Install from this source". Or use "Install web app" for a one-tap PWA.</p>
+            <p><b>iPhone:</b> use Add to Home Screen in Safari (see guide).</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SAFETY ================= -->
+<section id="security" aria-label="Safety and security" style="background:var(--surface2);border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Safety first</span>
+      <h2 class="h2">Regulated, secure, transparent.</h2>
+      <p class="sub">Your money and your data are protected by regulation and bank-grade security at every layer.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>SEBI-registered broker</h3>
+        <p>Registered member of NSE, BSE, MCX &amp; NCDEX, operating under SEBI regulation.</p>
+      </div>
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+        <h3>Funds &amp; securities safety</h3>
+        <p>Holdings sit safely in your own Demat account; funds move only between your verified bank and Finvora.</p>
+      </div>
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4-3 7-7 8-4-1-7-4-7-8V6z"/><circle cx="12" cy="11" r="2"/><path d="M12 13v3"/></svg></div>
+        <h3>Bank-grade security</h3>
+        <p>256-bit encryption, 2-factor login and continuous monitoring protect your account.</p>
+      </div>
+      <div class="card">
+        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9.5a3 3 0 0 0-3-2c-1.7 0-3 1-3 2.3 0 3 6 1.7 6 4.7 0 1.3-1.3 2.3-3 2.3a3 3 0 0 1-3-2"/><path d="M12 6v1.5M12 16.5V18"/></svg></div>
+        <h3>Transparent pricing</h3>
+        <p>Flat, upfront charges with no hidden fees — you always know what you pay.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section aria-label="Get started call to action">
+  <div class="wrap">
+    <div class="finalcta">
+      <h2>Ready to start trading?</h2>
+      <div class="fc-btns">
+        <a class="btn btn-lime js-app" href="/app">Open free account</a>
+        <a class="btn btn-outline" href="#download">Download app</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site" id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <a class="brand" href="#top" aria-label="Finvora home">
+          <span class="tile" aria-hidden="true">FV</span>
+          <span>Finvora</span>
+        </a>
+        <p>Trade stocks, F&amp;O, commodities and IPOs with pro-grade tools — on Android and the web. Markets, made simpler.</p>
+        <div class="foot-links">
+          <a href="/downloads/finvora.apk" download>Download APK</a>
+          <a href="#download" id="footInstall">Install web app</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#products">Stocks &amp; ETFs</a></li>
+          <li><a href="#products">Futures &amp; Options</a></li>
+          <li><a href="#products">Commodities</a></li>
+          <li><a href="#products">IPOs</a></li>
+          <li><a href="#products">Research &amp; advisory</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#download">Download</a></li>
+          <li><a href="#security">Security</a></li>
+          <li><a href="#products">Pricing</a></li>
+          <li><a href="#contact">Support</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="legal-grid">
+      <div class="legal-block">
+        <h4>Contact us</h4>
+        <p><strong>Corporate office</strong><br>[Finvora corporate office address]</p>
+        <p><strong>Registered office</strong><br>[Finvora registered office address]</p>
+        <p>Phone: [Phone] &nbsp;·&nbsp; Email: [support email]</p>
+      </div>
+      <div class="legal-block">
+        <h4>Regulatory information</h4>
+        <p>SEBI Reg. No.: [Finvora's SEBI registration]<br>
+        Exchange memberships: NSE [—] · BSE [—] · MCX [—] · NCDEX [—]<br>
+        Depository (DP): [Finvora's DP ID] &nbsp;·&nbsp; Research Analyst: [RA reg. no.]<br>
+        AMFI: [ARN] &nbsp;·&nbsp; CIN: [Finvora's CIN]</p>
+      </div>
+    </div>
+
+    <div class="legal-block" style="margin-top:6px">
+      <h4>Useful links</h4>
+      <p style="display:flex;flex-wrap:wrap;gap:6px 16px">
+        <a href="https://www.sebi.gov.in" target="_blank" rel="noopener">SEBI</a>
+        <a href="https://www.nseindia.com" target="_blank" rel="noopener">NSE</a>
+        <a href="https://www.bseindia.com" target="_blank" rel="noopener">BSE</a>
+        <a href="https://www.nsdl.co.in" target="_blank" rel="noopener">NSDL</a>
+        <a href="https://www.cdslindia.com" target="_blank" rel="noopener">CDSL</a>
+        <a href="https://www.mcxindia.com" target="_blank" rel="noopener">MCX</a>
+        <a href="https://www.ncdex.com" target="_blank" rel="noopener">NCDEX</a>
+        <a href="https://www.rbi.org.in" target="_blank" rel="noopener">RBI</a>
+        <a href="https://www.irdai.gov.in" target="_blank" rel="noopener">IRDAI</a>
+        <a href="https://www.amfiindia.com" target="_blank" rel="noopener">AMFI</a>
+        <a href="https://www.msei.in" target="_blank" rel="noopener">MSEI</a>
+      </p>
+    </div>
+
+    <!-- IMPORTANT — Fill every [bracketed] placeholder with FINVORA'S OWN registered
+         details before going live. Do NOT paste another broker's SEBI/CIN/DP/
+         membership numbers or registered office here: putting a licensed
+         intermediary's registration under a different brand impersonates a
+         SEBI-registered entity and is illegal. -->
+
+    <div class="foot-bottom">
+      <p class="copy">© 2026 Finvora. All rights reserved.</p>
+      <p class="disc">Investments in the securities market are subject to market risks. Read all the related documents carefully before investing.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= iOS INSTALL MODAL ================= -->
+<div class="overlay" id="iosModal" role="dialog" aria-modal="true" aria-labelledby="iosModalTitle">
+  <div class="modal">
+    <button class="modal-close" id="iosModalClose" aria-label="Close">×</button>
+    <h3 id="iosModalTitle">Install Finvora on iPhone / iPad</h3>
+    <p class="m-sub">Add Finvora to your Home Screen in a few taps.</p>
+    <ol>
+      <li>Open this site in <b>Safari</b> (not Chrome) — the ⎙ Share button must be visible.</li>
+      <li>Tap the <b>Share</b> button (the square with an up-arrow) at the bottom of Safari.</li>
+      <li>Scroll down and tap <b>"Add to Home Screen"</b>.</li>
+      <li>Tap <b>"Add"</b> — Finvora installs like a normal app with its own icon.</li>
+    </ol>
+    <div class="note">iOS doesn't support APK files, so iPhone users install the web app (PWA) this way — it works fully, including live prices.</div>
+    <p class="trouble">Not seeing "Add to Home Screen"? Make sure you're in Safari and reload the page.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var APP_URL = "/app";
+  // Point all in-app links at APP_URL (single place to change).
+  document.querySelectorAll(".js-app").forEach(function(a){ a.setAttribute("href", APP_URL); });
+
+  /* ---------- Ticker: build track + duplicate for seamless loop ---------- */
+  var items = [
+    ["NIFTY 50","24,312.30","+0.62%",1],["SENSEX","79,842.10","+0.54%",1],["BANKNIFTY","51,204.75","-0.18%",0],
+    ["RELIANCE","2,945.60","+1.24%",1],["TCS","3,890.10","-0.42%",0],["HDFCBANK","1,678.25","+0.81%",1],
+    ["INFY","1,512.00","+2.10%",1],["ICICIBANK","1,182.40","+0.35%",1],["SBIN","842.15","-0.66%",0],
+    ["ITC","468.90","+0.28%",1],["LT","3,610.55","+1.02%",1],["TATASTEEL","168.30","-1.15%",0],
+    ["GOLD","71,240","+0.44%",1],["CRUDEOIL","6,512","-0.92%",0],["USDINR","83.42","+0.06%",1]
+  ];
+  function tickHTML(it){
+    var up = it[3]===1;
+    var arrow = up ? "▲" : "▼";
+    var cls = up ? "pos" : "neg";
+    return '<span class="tk"><span class="tk-sym">'+it[0]+'</span>'+
+           '<span class="tk-px">'+it[1]+'</span>'+
+           '<span class="tk-ch '+cls+'">'+arrow+it[2]+'</span></span>';
+  }
+  var one = items.map(tickHTML).join("");
+  var track = document.getElementById("tickerTrack");
+  if(track){ track.innerHTML = one + one; } // duplicate for -50% loop
+
+  /* ---------- Mobile nav toggle ---------- */
+  var burger = document.getElementById("hamburger");
+  var drawer = document.getElementById("drawer");
+  function closeDrawer(){ drawer.classList.remove("open"); burger.setAttribute("aria-expanded","false"); }
+  if(burger && drawer){
+    burger.addEventListener("click", function(){
+      var open = drawer.classList.toggle("open");
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    drawer.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", closeDrawer); });
+  }
+
+  /* ---------- Smooth-scroll for in-page anchors (respects reduced motion) ---------- */
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener("click", function(e){
+      var id = a.getAttribute("href");
+      if(id.length < 2) return;
+      var el = document.querySelector(id);
+      if(el){
+        e.preventDefault();
+        el.scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "start"});
+      }
+    });
+  });
+
+  /* ---------- iOS install modal ---------- */
+  var modal = document.getElementById("iosModal");
+  var openIos = document.getElementById("iosGuideLink");
+  var closeIos = document.getElementById("iosModalClose");
+  function showModal(e){ if(e) e.preventDefault(); modal.classList.add("open"); document.body.style.overflow="hidden"; }
+  function hideModal(){ modal.classList.remove("open"); document.body.style.overflow=""; }
+  if(openIos) openIos.addEventListener("click", showModal);
+  if(closeIos) closeIos.addEventListener("click", hideModal);
+  if(modal) modal.addEventListener("click", function(e){ if(e.target===modal) hideModal(); });
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape" && modal.classList.contains("open")) hideModal(); });
+
+  /* ---------- Platform detection ---------- */
+  var ua = navigator.userAgent || "";
+  var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/.test(ua);
+  var apkBtn = document.getElementById("apkBtn");
+  var pwaBtn = document.getElementById("installPwaBtn");
+
+  if(isIOS){
+    // Apple doesn't allow APK installs — hide APK, repurpose PWA button to open iOS guide.
+    if(apkBtn) apkBtn.style.display = "none";
+    if(pwaBtn){
+      pwaBtn.textContent = "Add to Home Screen";
+      pwaBtn.classList.remove("btn-outline"); pwaBtn.classList.add("btn-lime");
+      pwaBtn.addEventListener("click", showModal);
+      // Add an "Open web app" secondary action.
+      var openWeb = document.createElement("a");
+      openWeb.className = "btn btn-outline";
+      openWeb.href = APP_URL;
+      openWeb.textContent = "Open web app";
+      pwaBtn.parentNode.appendChild(openWeb);
+    }
+  } else if(isAndroid){
+    // APK primary is already visible; PWA install handled below.
+    if(apkBtn) apkBtn.textContent = "Download APK";
+  }
+  // Desktop: both buttons remain visible (default markup).
+
+  /* ---------- PWA install (beforeinstallprompt) ---------- */
+  var deferredPrompt = null;
+  window.addEventListener("beforeinstallprompt", function(e){
+    e.preventDefault();
+    deferredPrompt = e;
+  });
+  function triggerInstall(e){
+    if(e) e.preventDefault();
+    if(deferredPrompt){
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.finally(function(){ deferredPrompt = null; });
+    } else if(isIOS){
+      showModal();
+    } else {
+      // Fallback: no native prompt available — guide the user.
+      window.location.href = APP_URL;
+    }
+  }
+  if(pwaBtn && !isIOS) pwaBtn.addEventListener("click", triggerInstall);
+  var footInstall = document.getElementById("footInstall");
+  if(footInstall) footInstall.addEventListener("click", function(e){
+    if(isIOS){ showModal(e); }
+    else if(deferredPrompt){ triggerInstall(e); }
+    // else: let it scroll to #download
+  });
+})();
+</script>
+</body>
+</html>

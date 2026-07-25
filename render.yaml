@@ -1,0 +1,42 @@
+# Render Blueprint — Finvora, ONE service = the whole app on ONE URL.
+# It builds the PWA (client) AND runs the server, which serves the customer app,
+# the admin console, and the API from a single web service.
+#
+# Deploy:  Render Dashboard → New → Blueprint → pick this repo → Apply.
+#
+# This file is set up for the FREE plan (no persistent disk). Data lives on the
+# normal filesystem and resets when Render redeploys — fine for testing.
+#
+# To keep data permanently (paid Starter plan, ~$7/mo), uncomment the `disk:`
+# block AND the DATA_DIR env var at the bottom.
+services:
+  - type: web
+    name: finvora
+    runtime: node
+    plan: free                    # free tier sleeps after ~15 min idle; first hit after sleep is slow.
+    buildCommand: npm run build    # installs server + client, builds the PWA into client/dist
+    startCommand: npm start        # node server/src/index.js — serves the PWA + API on one URL
+    healthCheckPath: /api/health
+    autoDeploy: true               # every git push to main auto-redeploys
+    envVars:
+      - key: NODE_VERSION
+        value: "24.16.0"          # node:sqlite works without a flag on Node 24
+      - key: FEED_MODE
+        value: yahoo              # real NSE prices (free). Use "sim" for an always-lively demo feed.
+      - key: SMS_MODE
+        value: demo               # on-screen OTP. Set "twilio" + creds for real SMS.
+      - key: DEMO_HINTS
+        value: "false"            # hide the demo-login helper for a production look
+      - key: JWT_SECRET
+        generateValue: true       # Render generates a strong secret and keeps it
+      - key: GATEWAY_WEBHOOK_SECRET
+        generateValue: true
+      # --- Paid plan only: to persist data across redeploys, uncomment these ---
+      # - key: DATA_DIR
+      #   value: /var/data
+
+# --- Paid plan only: uncomment to attach a persistent disk (Starter+ required) ---
+#    disk:
+#      name: finvora-data
+#      mountPath: /var/data
+#      sizeGB: 1
