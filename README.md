@@ -32,10 +32,6 @@ npm run dev
 
 Open **http://localhost:5173**.
 
-| Role | Login | Password |
-|---|---|---|
-| Administrator | `9999999999` | `Admin@123` |
-| Demo investor (optional, run `npm run seed` in server/) | `9876543210` | `Demo@123` |
 
 New investors: **Register** → the OTP is shown on screen (demo mode) → complete
 KYC + bank → the admin approves both → the account activates automatically.
