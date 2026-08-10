@@ -53,8 +53,23 @@ const config = {
     webhookSecret: process.env.RAZORPAY_WEBHOOK_SECRET || '',
   },
 
-  // Stage 9 — Market feed: 'sim' (built-in live simulator, free) or 'yahoo' (free real quotes, no key).
+  // Stage 9 — Market feed:
+  //   'sim'   — built-in live simulator (free, offline)
+  //   'yahoo' — free real quotes, no key, but NSE data is ~15 MINUTES DELAYED and
+  //             has no option chain, so F&O premiums fall back to a model
+  //   'angel' — Angel One SmartAPI: real-time NSE/BSE, REAL option chains with OI,
+  //             and real MCX commodities. Free, but needs the credentials below.
+  //             Falls back to yahoo automatically if SmartAPI is unreachable.
   feedMode: process.env.FEED_MODE || 'sim',
+
+  // Angel One SmartAPI (https://smartapi.angelone.in). The JWT expires daily, so
+  // the server logs in on its own using a TOTP generated from ANGEL_TOTP_SECRET.
+  angel: {
+    apiKey: process.env.ANGEL_API_KEY || '',
+    clientCode: process.env.ANGEL_CLIENT_CODE || '',
+    pin: process.env.ANGEL_MPIN || process.env.ANGEL_PIN || '',
+    totpSecret: process.env.ANGEL_TOTP_SECRET || '',
+  },
 
   // Outbound proxy(ies) for market-data requests. Set PROXY_URLS to a comma-
   // separated list (http://user:pass@host:port, or socks5://…) and the server
