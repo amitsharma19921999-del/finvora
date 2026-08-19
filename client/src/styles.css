@@ -734,6 +734,7 @@ img { max-width: 100%; }
 }
 @media (max-width: 620px) {
   .order-col { flex-direction: column; }
+  .order-col .ticket, .order-col .depth-panel { flex: 0 0 auto; }
   .inst-bidask { margin-left: 0; width: 100%; }
 }
 
